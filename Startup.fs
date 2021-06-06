@@ -9,9 +9,8 @@ open Giraffe
 open WebApp
 open Error
 
-
 // ---------------------------------
-// Config and Main
+// Config
 // ---------------------------------
 
 let configureCors (builder : CorsPolicyBuilder) =
@@ -30,8 +29,10 @@ let configureApp (app : IApplicationBuilder) =
         .UseStaticFiles()
         .UseGiraffe(webApp)
 
+
 let configureServices (services : IServiceCollection) =
     services.AddCors()    |> ignore
+    //services.AddDbContext() |> ignore
     services.AddGiraffe() |> ignore
 
 let configureLogging (builder : ILoggingBuilder) =
